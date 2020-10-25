@@ -83,6 +83,9 @@ background-color: grey
       </div>
     <a class = "points d-flex justify-content-center" style="color: whitesmoke;">
     </a>
+   <div class="d-flex justify-content-center">
+    <button type="button" class= "reloadButton d-none" style="" onclick="reloadScreen()">Try Again</button>
+  </div>
       <script>
 let currentQuestion = 0
 let currentPoints = 0
@@ -110,7 +113,9 @@ const startGame = () => {
  getButton.remove()
  
 }
-
+const reloadScreen = () => {
+  location = location
+}
 
 const checkNgoNext = (element) =>{
 let getQuestion = document.querySelector(element)
@@ -139,9 +144,12 @@ const nextQuestion = () =>
     getNextQ.remove()
     let parent = document.querySelector(".points")
     let newPoints = document.createElement("a")
+    let newButton = document.querySelector(".reloadButton")
     newPoints.innerText = currentPoints
     parent.innerHTML = "Your score is " + currentPoints
+    newButton.className = "reloadButton d-flex justify-content:center"
     return
+ 
   }
   let questionsArray = questions[currentQuestion].incorrect_answers
  questionsArray.push(questions[currentQuestion].correct_answer)
